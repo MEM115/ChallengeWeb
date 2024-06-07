@@ -1,0 +1,35 @@
+﻿@model WithdrawResponseViewModel
+
+@{
+    ViewData["Title"] = "Confirmación de Retiro";
+}
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-12 col-md-8 offset-md-2 col-lg-6 offset-lg-3">
+            <div class="card">
+                <div class="card-header text-center bg-success text-white">
+                    Confirmación de Retiro
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title text-center">Retiro Exitoso</h5>
+                    <p class="card-text">
+                        <strong>ID de Cuenta:</strong> @Model.AccountId
+                    </p>
+                    <p class="card-text">
+                        <strong>Monto Retirado:</strong> $@Model.Amount.ToString("F2")
+                    </p>
+                    <p class="card-text">
+                        <strong>Saldo Anterior:</strong> $@Model.OldBalance.ToString("F2")
+                    </p>
+                    <p class="card-text">
+                        <strong>Nuevo Saldo:</strong> $@Model.NewBalance.ToString("F2")
+                    </p>
+                    <p class="card-text">
+                        <strong>Fecha y Hora de la Operación:</strong> @Model.OperationTime.ToString("g")
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

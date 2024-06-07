@@ -1,0 +1,42 @@
+﻿@model ChallengeWeb.Models.LoginViewModel
+
+@{
+    ViewData["Title"] = "Login";
+}
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-12 col-md-6 offset-md-3 col-lg-4 offset-lg-4">
+            <div class="card">
+                <div class="card-header text-center bg-primary text-white">
+                    Login
+                </div>
+                <div class="card-body">
+                    @if (ViewData.ModelState.ContainsKey(string.Empty))
+                    {
+                        <div class="alert alert-danger" role="alert">
+                            @Html.ValidationSummary()
+                        </div>
+                    }
+                    <form asp-action="Login" method="post">
+                        <div class="mb-3">
+                            <label for="cardNumber" class="form-label">Número de Tarjeta</label>
+                            <input type="text" class="form-control @(ViewData.ModelState.ContainsKey("CardNumber") ? "is-invalid" : "")" id="cardNumber" name="CardNumber" value="@Model.CardNumber" required>
+                            <div class="invalid-feedback">
+                                @Html.ValidationMessageFor(m => m.CardNumber)
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="pin" class="form-label">PIN</label>
+                            <input type="password" class="form-control @(ViewData.ModelState.ContainsKey("Pin") ? "is-invalid" : "")" id="pin" name="Pin" value="@Model.Pin" required>
+                            <div class="invalid-feedback">
+                                @Html.ValidationMessageFor(m => m.Pin)
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">Iniciar Sesión</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
